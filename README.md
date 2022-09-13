@@ -4,7 +4,7 @@ A reinforcement learning-based active queue management (AQM) that enables small 
 
 ## Setup
 QueuePilot was tested on Ubuntu 20.04 and python 3.9. 
-A basic configuration includes a source host and destination host, connected through a routing PC. 
+A basic configuration includes a source host and a destination host, connected through two routing PCs. 
 
 The file `environment.yml` contains the python dependencies.
 
@@ -43,4 +43,4 @@ Addtional tests can be found in `test.py`
 **Output files** are available in `QueuePilot/logs/`. TensorBoard log of the training run is in `~/ray_results/` 
 
 ## Contact
-Please use GitHub's issue.
+Please use GitHub's issues.
