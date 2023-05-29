@@ -6,7 +6,7 @@ from statistics import mean, stdev
 import gym
 import numpy as np
 from gym_lr.rl_src.configurations import SEC_PER_STEP, SLEEP_CORRECTION
-from plot_graphs_multiswitch import plot_episode_graph
+from plots import plot_episode_graph
 
 
 class EnvBase(gym.Env):

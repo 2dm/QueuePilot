@@ -47,11 +47,12 @@ class RealNetBase:
 
     def set_next_router_qdisc(self, max_buf=10000):
         cmds = [
-            f'ssh -i {KEY_FILE} root@{NEXT_ROUTER_IP} ethtool -K {INTERFACES[NEXT_ROUTER_NAME]["ingress"]} tso off gso off gro off',
             f'ssh -i {KEY_FILE} root@{NEXT_ROUTER_IP} ethtool -K {INTERFACES[NEXT_ROUTER_NAME]["egress"]} tso off gso off gro off',
             f'ssh -i {KEY_FILE} root@{NEXT_ROUTER_IP} sysctl -w net.ipv4.tcp_ecn=1',
             f'ssh -i {KEY_FILE} root@{NEXT_ROUTER_IP} sysctl -w net.ipv4.tcp_ecn_fallback=0',
         ]
+        for interface in INTERFACES[NEXT_ROUTER_NAME]["ingress"]:
+            cmds.append(f'ssh -i {KEY_FILE} root@{NEXT_ROUTER_IP} ethtool -K {interface} tso off gso off gro off')
 
         for cmd in cmds:
             self.cmd_over_ssh(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
